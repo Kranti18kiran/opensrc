@@ -28,25 +28,42 @@ test.only("Basic Test 1 page fixture", async ({page})=>  {
         console.log(trimspaces_content);
         const textconsltlistitem = await consultlistitems.count();
         console.log(textconsltlistitem);
-        const closesconsult = await page.locator('[class="field__label"]').getByText('Closes');
-        const closescount = await closesconsult.count();
-        const closedconsult = await page.locator('[class*="field__label"]').getByText('Closed');
-        const closedcount = await closedconsult.count();
 
+        const block_Title_open = await page.locator("[id*='block-views-block-consultation']").first();
+        const block_Title_closed = await page.locator("[id*='block-views-block-consultation']").last();
+    //  console.log(block_Title_open, block_Title_closed);
 
-        console.log(closescount, closedcount);
+       const closesconsult = await block_Title_open.getByText('Closes').count();
+       const closedconsult = await block_Title_closed.getByText('Closed').count();
 
-        for(let i=0; i < closescount; i++){
+        //const closesconsult = await page.locator('[class="field__label"]').getByText('Closes');
+        //const closescount = await closesconsult.count();
+        // const closedconsult = await page.locator('[class*="field__label"]').getByText('Closed');
+        // const closedcount = await closedconsult.count();
+
+        // console.log(closesconsult, closedconsult);
+
+        for(let i=0; i < closesconsult; i++){
 
              const nodeTitle = await page.locator(".node__title").nth(i);
              const nodeTitlecontent = await nodeTitle.textContent();
-            console.log(nodeTitlecontent);
+             console.log(nodeTitlecontent);
              await nodeTitle.click();
              await expect(page.locator(".consultation-submission")).toBeVisible();
              await page.goBack();
 
         }
+/*
+        for (let j=0; j< closedcount; j++){
+             const closedTitle = await page.locator(".node__title").nth(j);
+             const closedTitlecontent = await nodeTitle.textContent();
+             console.log(closedTitlecontent);
+             await closedTitle.click();
+             await expect(page.locator(".consultation-submission")).toBeFalsy();
+             await page.goBack();
 
+        }
 
+*/
     
     });
