@@ -39,27 +39,29 @@ test.only("Basic Test 1 page fixture", async ({page})=>  {
 
 let i = 0;
 do {
-
-  const nodeTitle = await page.locator(".node__title").nth(i);
-  const nodeTitlecontent = await nodeTitle.textContent();
-  console.log(nodeTitlecontent);
-  await nodeTitle.click();
-  await expect(page.locator(".consultation-submission")).toBeVisible();
-  await page.goBack();
-  i += 1;
+      const nodeTitle = await page.locator(".node__title").nth(i);
+      const nodeTitlecontent = await nodeTitle.textContent();
+      await nodeTitle.click();
+      const countDown = await page.locator('[class*="date-countdown"]').textContent();
+      const trim_countDown = countDown.split(/\s/).join('');
+      console.log(nodeTitlecontent, trim_countDown);
+      await expect(page.locator(".consultation-submission")).toBeVisible();
+      await page.goBack();
+      i += 1;
 } while (i < closesconsult);
 
 let j = i;
 do {
-
-  const nodeTitle = await page.locator(".node__title").nth(j);
-  const nodeTitlecontent = await nodeTitle.textContent();
-  console.log(nodeTitlecontent);
-  await nodeTitle.click();
-  await expect(page.locator('[class*="closed"]')).toBeTruthy();
-  await page.goBack();
-  j += 1;
+     const nodeTitle = await page.locator(".node__title").nth(j);
+     await nodeTitle.nth(j)
+     const nodeTitlecontent = await nodeTitle.textContent();
+     await nodeTitle.click();
+     const consultclosed = await page.locator('[class*="closed"]').textContent();
+     const trim_consultclosed = consultclosed.split(/\s/).join('');
+     console.log(nodeTitlecontent, trim_consultclosed);
+     await expect(page.locator('[class*="closed"]')).toBeTruthy();
+     await page.goBack();
+     j += 1;
 } while (j < textconsltlistitem);
 
-    
-    });
+});
