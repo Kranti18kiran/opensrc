@@ -29,41 +29,37 @@ test.only("Basic Test 1 page fixture", async ({page})=>  {
         const textconsltlistitem = await consultlistitems.count();
         console.log(textconsltlistitem);
 
-        const block_Title_open = await page.locator("[id*='block-views-block-consultation']").first();
-        const block_Title_closed = await page.locator("[id*='block-views-block-consultation']").last();
-    //  console.log(block_Title_open, block_Title_closed);
+        const block_Title_open = await page.locator('[data-component-id="linz:block-view"]').nth(0);
+        const block_Title_closed = await page.locator('[data-component-id="linz:block-view"]').nth(1);
 
-       const closesconsult = await block_Title_open.getByText('Closes').count();
-       const closedconsult = await block_Title_closed.getByText('Closed').count();
+       const closesconsult = await block_Title_open.locator('[class*="field__label"]').getByText('Closes').count();
+       const closedconsult = await block_Title_closed.locator('[class*="field__label"]').getByText('Closed').count();
 
-        //const closesconsult = await page.locator('[class="field__label"]').getByText('Closes');
-        //const closescount = await closesconsult.count();
-        // const closedconsult = await page.locator('[class*="field__label"]').getByText('Closed');
-        // const closedcount = await closedconsult.count();
+        console.log(closesconsult, closedconsult);
 
-        // console.log(closesconsult, closedconsult);
+let i = 0;
+do {
 
-        for(let i=0; i < closesconsult; i++){
+  const nodeTitle = await page.locator(".node__title").nth(i);
+  const nodeTitlecontent = await nodeTitle.textContent();
+  console.log(nodeTitlecontent);
+  await nodeTitle.click();
+  await expect(page.locator(".consultation-submission")).toBeVisible();
+  await page.goBack();
+  i += 1;
+} while (i < closesconsult);
 
-             const nodeTitle = await page.locator(".node__title").nth(i);
-             const nodeTitlecontent = await nodeTitle.textContent();
-             console.log(nodeTitlecontent);
-             await nodeTitle.click();
-             await expect(page.locator(".consultation-submission")).toBeVisible();
-             await page.goBack();
+let j = i;
+do {
 
-        }
-/*
-        for (let j=0; j< closedcount; j++){
-             const closedTitle = await page.locator(".node__title").nth(j);
-             const closedTitlecontent = await nodeTitle.textContent();
-             console.log(closedTitlecontent);
-             await closedTitle.click();
-             await expect(page.locator(".consultation-submission")).toBeFalsy();
-             await page.goBack();
+  const nodeTitle = await page.locator(".node__title").nth(j);
+  const nodeTitlecontent = await nodeTitle.textContent();
+  console.log(nodeTitlecontent);
+  await nodeTitle.click();
+  await expect(page.locator('[class*="closed"]')).toBeTruthy();
+  await page.goBack();
+  j += 1;
+} while (j < textconsltlistitem);
 
-        }
-
-*/
     
     });
