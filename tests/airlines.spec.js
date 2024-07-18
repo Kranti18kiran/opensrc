@@ -24,7 +24,10 @@ const endwhen = await page.locator('[data-testid="endSelected"]');
 const weekdayslabel = await page.locator('[class*="WeekdayLabels"]');
 const monthpicker = await page.locator('[class*="Month"]').getByText(monthpick);
 const monthrow = await page.locator('[role="rowgroup"] [class*="Month"]').getByText(monthpick);
-const pickdate = await page.locator('[role="rowgroup"] [class*="Week"]');
+const pickweek = await page.locator('[role="rowgroup"] [class*="Week"]');
+const monthblockpick = await page.locator('[role="rowgroup"]').getByText(monthpick);
+const pickdateselect = await page.locator('[class*="runway-calendar__day"]');
+
 
 
 
@@ -80,13 +83,10 @@ for (let i=0; i<dropdowncount; i++){
     console.log(await weekdayslabel.count(), 
                 await weekdayslabel.nth(0).textContent());
 
-    
-   await monthrow.scrollIntoViewIfNeeded()
-   console.log(await pickdate.count());
-   await monthrow.pickdate.
-    
-
-
+   const countdate = await pickdateselect.getByText(datepick).count()    
+   await monthblockpick.scrollIntoViewIfNeeded();
+   console.log(await monthblockpick.allInnerTexts());
+   console.log(await pickdateselect.allInnerTexts(), countdate);
 
 
 await page.pause();
