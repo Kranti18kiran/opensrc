@@ -17,6 +17,7 @@ expect : {
   use: {
     browserName : 'firefox',
     headless: false
+    
 
   },
 

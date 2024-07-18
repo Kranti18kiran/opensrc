@@ -2,13 +2,14 @@ const {test,expect} = require('@playwright/test');
 
 
 test ("airlines test", async ({page})=>{
-
+await page.setViewportSize({width: 1920, height: 1080});
 await page.goto('https://www.qantas.com/au/en.html');
 
 const destplace = "sydney";
 const arrivalplace = "Hyderabad";
-const monthpick = "October"
-const datepick = "13"
+const monthpick = "September"
+const datepick = "26"
+const yearpick = "2024"
 const fromdep = await page.locator('[class*=departure-port__container]');
 const toarrive = await page.locator('[class*=arrival-port__container]');
 const lookupvalue = await page.locator('[data-testid="InlineDialog-Dialog"] input');
@@ -24,12 +25,7 @@ const endwhen = await page.locator('[data-testid="endSelected"]');
 const weekdayslabel = await page.locator('[class*="WeekdayLabels"]');
 const monthpicker = await page.locator('[class*="Month"]').getByText(monthpick);
 const monthrow = await page.locator('[role="rowgroup"] [class*="Month"]').getByText(monthpick);
-const pickweek = await page.locator('[role="rowgroup"] [class*="Week"]');
 const monthblockpick = await page.locator('[role="rowgroup"]').getByText(monthpick);
-const pickdateselect = await page.locator('[class*="runway-calendar__day"]');
-
-
-
 
 
 //departure selection
@@ -83,11 +79,18 @@ for (let i=0; i<dropdowncount; i++){
     console.log(await weekdayslabel.count(), 
                 await weekdayslabel.nth(0).textContent());
 
-   const countdate = await pickdateselect.getByText(datepick).count()    
-   await monthblockpick.scrollIntoViewIfNeeded();
-   console.log(await monthblockpick.allInnerTexts());
-   console.log(await pickdateselect.allInnerTexts(), countdate);
+await monthblockpick.scrollIntoViewIfNeeded();
 
+// while(true){
+
+//     const monthselection = await page.locator('[role="application"] [role="rowgroup"] [class*="Month"]').getByText(monthpick);
+//     //const yearselection = await page.locator('')
+//     if(monthselection === monthpick){
+
+//         break;
+//     }
+//     await  page.locator(':has-text("September")').scrollIntoViewIfNeeded();
+// }
 
 await page.pause();
 });
