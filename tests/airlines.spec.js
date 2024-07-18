@@ -7,6 +7,8 @@ await page.goto('https://www.qantas.com/au/en.html');
 
 const destplace = "sydney";
 const arrivalplace = "Hyderabad";
+const monthpick = "October"
+const datepick = "13"
 const fromdep = await page.locator('[class*=departure-port__container]');
 const toarrive = await page.locator('[class*=arrival-port__container]');
 const lookupvalue = await page.locator('[data-testid="InlineDialog-Dialog"] input');
@@ -20,6 +22,11 @@ const travelpassangers = await page.locator('[data-testid="passengers"]');
 const departwhen = await page.locator('[data-testid="startSelected"]');
 const endwhen = await page.locator('[data-testid="endSelected"]');
 const weekdayslabel = await page.locator('[class*="WeekdayLabels"]');
+const monthpicker = await page.locator('[class*="Month"]').getByText(monthpick);
+const monthrow = await page.locator('[role="rowgroup"] [class*="Month"]').getByText(monthpick);
+const pickdate = await page.locator('[role="rowgroup"] [class*="Week"]');
+
+
 
 
 //departure selection
@@ -72,6 +79,11 @@ for (let i=0; i<dropdowncount; i++){
     await expect(endwhen.getByText('Return when?')).toBeVisible();
     console.log(await weekdayslabel.count(), 
                 await weekdayslabel.nth(0).textContent());
+
+    
+   await monthrow.scrollIntoViewIfNeeded()
+   console.log(await pickdate.count());
+   await monthrow.pickdate.
     
 
 
