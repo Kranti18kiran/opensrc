@@ -80,7 +80,7 @@ for (let i=0; i<dropdowncount; i++){
                 await weekdayslabel.nth(0).textContent());
 
 await monthblockpick.locator('[role="application"] [role="rowgroup"] [class*="Month"]').scrollIntoViewIfNeeded({ behavior: "smooth", block: "end", inline: "nearest" });
-//await  page.locator('button', { hasText: '2024-09-26' }).ScrollIntoView({ block: "end" });
+
 
 // while(true){
 
@@ -95,4 +95,3 @@ await monthblockpick.locator('[role="application"] [role="rowgroup"] [class*="Mo
 
 await page.pause();
 });
-
