@@ -26,8 +26,8 @@ const weekdayslabel = await page.locator('[class*="WeekdayLabels"]');
 const monthpicker = await page.locator('[class*="Month"]').getByText(monthpick);
 const monthrow = await page.locator('[role="rowgroup"] [class*="Month"]').getByText(monthpick);
 const monthblockpick = await page.locator('[role="rowgroup"]').getByText(monthpick);
-
-
+const today = new Date().toLocaleDateString();
+console.log(today)
 //departure selection
 await fromdep.click();
 await lookupvalue.waitFor();
@@ -92,6 +92,5 @@ await monthblockpick.locator('[role="application"] [role="rowgroup"] [class*="Mo
 //     }
 //     await  page.locator(':has-text("September")').scrollIntoViewIfNeeded();
 // }
-
 await page.pause();
 });
