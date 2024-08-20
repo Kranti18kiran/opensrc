@@ -8,8 +8,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.45.0",
-    "@types/node": "^20.14.9"
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^20.14.9",
+    "allure-playwright": "^2.29.0"
   },
   "dependencies": {
     "exceljs": "^4.4.0"
