@@ -1,2 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","32547","Basic Test 1 page fixture","","Tue Aug 20 15:58:29 AEST 2024","broken","Tue Aug 20 15:59:02 AEST 2024","","BasicE2Etests.spec.js","",""
+"","14668","airlines test","Firefox","Tue Aug 20 16:27:21 AEST 2024","passed","Tue Aug 20 16:27:36 AEST 2024","","airlines.spec.js","",""
+"","4439","Basic Test 1 browser context fixture","Firefox","Tue Aug 20 16:27:32 AEST 2024","passed","Tue Aug 20 16:27:37 AEST 2024","","BasicE2Etests.spec.js","",""
+"","11099","All Elements","Firefox","Tue Aug 20 16:27:21 AEST 2024","passed","Tue Aug 20 16:27:32 AEST 2024","","all_elements.spec.js","",""
+"","16104","Basic Test 1 page fixture","Firefox","Tue Aug 20 16:27:37 AEST 2024","passed","Tue Aug 20 16:27:53 AEST 2024","","BasicE2Etests.spec.js","",""

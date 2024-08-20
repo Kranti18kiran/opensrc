@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Learning",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "regression": "npx playwright test --reporter=line,allure-playwright;",
+    "safaribrowser": "npx playwright test --project=Safari --reporter=line,allure-playwright;",
+    "firefoxbrowser": "npx playwright test --project=Firefox --reporter=line,allure-playwright;"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
