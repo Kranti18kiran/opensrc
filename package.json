@@ -4,9 +4,9 @@
   "description": "Learning",
   "main": "index.js",
   "scripts": {
-    "regression": "npx playwright test --reporter=line,allure-playwright;",
-    "safaribrowser": "npx playwright test --project=Safari --reporter=line,allure-playwright;",
-    "firefoxbrowser": "npx playwright test --project=Firefox --reporter=line,allure-playwright;"
+    "regression": "npx playwright test;",
+    "safaribrowser": "npx playwright test --project=Safari;",
+    "firefoxbrowser": "npx playwright test --project=Firefox;"
   },
   "keywords": [],
   "author": "",
